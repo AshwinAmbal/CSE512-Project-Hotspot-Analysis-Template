@@ -30,7 +30,7 @@ object HotzoneAnalysis {
     joinDf.createOrReplaceTempView("joinResult")
 
     val sortDf = spark.sql("SELECT rectangle, COUNT(point) as Count_Points from joinResult GROUP BY rectangle ORDER BY rectangle")
-    
+    sortDf.createOrReplaceTempView("sortResult")
 
     return sortDf
   }
