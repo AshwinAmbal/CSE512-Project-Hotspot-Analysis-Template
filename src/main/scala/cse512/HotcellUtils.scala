@@ -47,5 +47,48 @@ object HotcellUtils {
     return calendar.get(Calendar.DAY_OF_MONTH)
   }
 
-  // YOU NEED TO CHANGE THIS PART
+  def squared(x:Int):Double=
+  {
+    return (x*x).toDouble
+  }
+
+  def NeighboursCount(minX: Int, minY: Int, minZ: Int, maxX: Int, maxY: Int, maxZ: Int, inputX: Int, inputY: Int, inputZ: Int): Int =
+  {
+    var count = 0;
+
+    if (inputX == minX || inputX == maxX) {
+      count += 1;
+    }
+
+    if (inputY == minY || inputY == maxY) {
+      count += 1;
+    }
+
+    if (inputZ == minZ || inputZ == maxZ) {
+      count += 1;
+    }
+
+    if (count == 1) {
+      return 17;
+    }
+    else if (count == 2)
+    {
+      return 11;
+    }
+    else if (count == 3)
+    {
+      return 7;
+    }
+    else
+    {
+      return 26;
+    }
+  }
+
+  def GStat(x: Int, y: Int, z: Int, mean:Double, sd: Double, countn: Int, sumn: Int, numcells: Int): Double =
+  {
+    val num = (sumn.toDouble - (mean*countn.toDouble))
+    val den = sd*math.sqrt((((numcells.toDouble*countn.toDouble) -(countn.toDouble*countn.toDouble))/(numcells.toDouble-1.0).toDouble).toDouble).toDouble
+    return (num/den).toDouble
+  }
 }
